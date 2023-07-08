@@ -44,7 +44,7 @@ pipeline{
                 }
             }
         }
-        stage('Static code analysis'){
+        stage('SonarQube analysis'){
             
             steps{
                 
