@@ -24,7 +24,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sonar-api-key', url: 'http://44.204.91.86:9000/') {
+                withSonarQubeEnv(credentialsId: 'server-api-key', url: 'http://44.204.91.86:9000/') {
                     sh 'mvn clean package sonar:sonar'
                 }
             }
@@ -32,7 +32,7 @@ pipeline {
         stage('Quality Gate Status') {
             steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api-key'
+                    waitForQualityGate abortPipeline: false, credentialsId: 'server-api-key'
                 }
             }
         }
