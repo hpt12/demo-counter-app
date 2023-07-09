@@ -50,9 +50,9 @@ pipeline{
                 
                 script{
                     
+                    def mvn = tool 'Apache Maven 3.6.3'
                     withSonarQubeEnv(credentialsId: 'sonar-key') {
-                        
-                        sh 'mvn clean package sonar:sonar'
+                        sh "${mvn}/bin/mvn clean package sonar:sonar -Dsonar.projectKey=new-project"
                     }
                    }
                     
